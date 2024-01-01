@@ -1,0 +1,19 @@
+{
+  "variants": {
+    "facing=east": {
+      "model": "emergencytorch:block/walltemporarytorch"
+    },
+    "facing=north": {
+      "model": "emergencytorch:block/walltemporarytorch",
+      "y": 270
+    },
+    "facing=south": {
+      "model": "emergencytorch:block/walltemporarytorch",
+      "y": 90
+    },
+    "facing=west": {
+      "model": "emergencytorch:block/walltemporarytorch",
+      "y": 180
+    }
+  }
+}

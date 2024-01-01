@@ -2,6 +2,9 @@ package net.sydgh.emergencytorch;
 
 import net.fabricmc.api.ModInitializer;
 
+import net.sydgh.emergencytorch.block.ModBlocks;
+import net.sydgh.emergencytorch.item.ModItemGroups;
+import net.sydgh.emergencytorch.item.ModItems;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -11,6 +14,10 @@ public class EmergencyTorch implements ModInitializer {
 
 	@Override
 	public void onInitialize() {
-		LOGGER.info("Hello Fabric world!");
+
+		ModItemGroups.registerItemGroups();
+		ModItems.registerModItems();
+		ModBlocks.registerModBlocks();
+
 	}
 }
