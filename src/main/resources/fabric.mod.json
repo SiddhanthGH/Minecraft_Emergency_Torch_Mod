@@ -1,0 +1,40 @@
+{
+	"schemaVersion": 1,
+	"id": "emergencytorch",
+	"version": "${version}",
+	"name": "EmergencyTorch",
+	"description": "Adds the ability to make a temporary torch in emergencies.",
+	"authors": [
+		"SydGH"
+	],
+	"contact": {
+		"homepage": "https://fabricmc.net/",
+		"sources": "https://github.com/FabricMC/fabric-example-mod"
+	},
+	"license": "CC0-1.0",
+	"icon": "assets/emergencytorch/icon.png",
+	"environment": "*",
+	"entrypoints": {
+		"main": [
+			"net.sydgh.emergencytorch.EmergencyTorch"
+		],
+		"client": [
+			"net.sydgh.emergencytorch.EmergencyTorchClient"
+		],
+		"fabric-datagen": [
+			"net.sydgh.emergencytorch.EmergencyTorchDataGenerator"
+		]
+	},
+	"mixins": [
+		"emergencytorch.mixins.json"
+	],
+	"depends": {
+		"fabricloader": ">=0.15.3",
+		"minecraft": "~1.20.1",
+		"java": ">=17",
+		"fabric-api": "*"
+	},
+	"suggests": {
+		"another-mod": "*"
+	}
+}
