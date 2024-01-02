@@ -1,7 +1,9 @@
 package net.sydgh.emergencytorch.item.custom;
 
 import net.minecraft.block.*;
+import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.player.PlayerEntity;
+import net.minecraft.item.ItemStack;
 import net.minecraft.particle.ParticleEffect;
 import net.minecraft.particle.ParticleTypes;
 import net.minecraft.state.StateManager;
@@ -17,6 +19,9 @@ import net.minecraft.world.World;
 import net.minecraft.world.WorldAccess;
 import net.minecraft.world.WorldView;
 import net.minecraft.block.BlockState;
+import net.minecraft.world.tick.Tick;
+import net.sydgh.emergencytorch.event.TickEventHandler;
+import org.jetbrains.annotations.Nullable;
 
 public class TempTorchBlock extends Block {
     protected static final VoxelShape BOUNDING_SHAPE = Block.createCuboidShape(6.0, 0.0, 6.0, 10.0, 10.0, 10.0);
@@ -59,9 +64,9 @@ public class TempTorchBlock extends Block {
     }
 
     @Override
-    public ActionResult onUse(BlockState state, World world, BlockPos pos, PlayerEntity player, Hand hand, BlockHitResult hit) {
-
-        return ActionResult.SUCCESS;
+    public void onPlaced(World world, BlockPos pos, BlockState state, @Nullable LivingEntity placer, ItemStack itemStack) {
+        super.onPlaced(world, pos, state, placer, itemStack);
+        int x = 1;
+        TickEventHandler.getState(x, pos);
     }
-
 }
