@@ -2,36 +2,37 @@ package net.sydgh.emergencytorch.event;
 
 import net.fabricmc.fabric.api.event.lifecycle.v1.ServerTickEvents;
 import net.minecraft.server.world.ServerWorld;
-import net.minecraft.util.ActionResult;
 import net.minecraft.util.math.BlockPos;
-import net.minecraft.world.tick.Tick;
+import net.sydgh.emergencytorch.EmergencyTorch;
+
+import java.util.ArrayList;
 
 public class TickEventHandler implements ServerTickEvents.EndWorldTick{
-    private static int X = 0;
     private static int i = 0;
-    private static BlockPos pos;
+    private static long tick;
+    private static long diff;
+    private static BlockPos Pos = null;
     @Override
     public void onEndTick(ServerWorld world) {
-        long tick = world.getTime();
-        if (X == 0){
-            TickEventHandler.i = 0;
-        } else if (X == 1) {
-            long initial = (tick - i);
-            long diff = tick - initial;
-            if (diff == 120){
-                world.breakBlock(pos,false);
-                TickEventHandler.X = 0;
-            }
-            i++;
+        tick = world.getTime();
+        long initial = (tick - i);
+        diff = tick - initial;
+        if(diff >= 120 && Pos != null){
+        breaker(world);
+        i = -1;
         }
+        i++;
     }
-    public static void getState(int x, BlockPos Pos){
-        if (x==0){
-            X = 0;
-        }
-        else {
-            X = 1;
-            pos = new BlockPos(Pos);
-        }
+
+
+    public void breaker(ServerWorld world){
+        world.breakBlock(Pos,false);
+        Pos = null;
+
+    }
+    public static void getState(BlockPos pos){
+        Pos = pos;
+        i = 0;
+        //EmergencyTorch.LOGGER.info(String.valueOf(diff));
     }
     }
