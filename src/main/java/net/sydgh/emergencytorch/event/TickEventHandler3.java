@@ -8,12 +8,22 @@ import net.sydgh.emergencytorch.item.custom.TempTorchBlock;
 
 import java.util.ArrayList;
 
-public class TickEventHandler implements ServerTickEvents.StartWorldTick{
+public class TickEventHandler3 implements ServerTickEvents.EndWorldTick{
     private static int i = 0;
     private static long tick;
     private static long diff;
     private static ArrayList<BlockPos> Pos = null;
     private static int Index;
+    @Override
+    public void onEndTick(ServerWorld world) {
+        tick = world.getTime();
+        long initial = (tick - i);
+        diff = tick - initial;
+        if(diff >= 120 && Pos != null){
+        breaker(world);
+        }
+        i++;
+    }
 
     public void breaker(ServerWorld world){
             world.breakBlock(Pos.get(0), false);
@@ -33,15 +43,4 @@ public class TickEventHandler implements ServerTickEvents.StartWorldTick{
         Index = Pos.size() - 1;
         i = 0;
     }
-
-    @Override
-    public void onStartTick(ServerWorld world) {
-        tick = world.getTime();
-        long initial = (tick - i);
-        diff = tick - initial;
-        if(diff >= 120 && Pos != null){
-            breaker(world);
-        }
-        i++;
     }
-}

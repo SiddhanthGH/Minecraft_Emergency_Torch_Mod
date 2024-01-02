@@ -15,7 +15,7 @@ import net.minecraft.world.World;
 import net.minecraft.world.WorldAccess;
 import net.minecraft.world.WorldView;
 import net.minecraft.block.BlockState;
-import net.sydgh.emergencytorch.event.TickEventHandler;
+import net.sydgh.emergencytorch.event.TickEventHandler3;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.ArrayList;
@@ -60,10 +60,22 @@ public class TempTorchBlock extends Block {
         world.addParticle(this.particle, d, e, f, 0.0, 0.0, 0.0);
     }
 
+    public static int PlaceCount = 0;
+    public static ArrayList<BlockPos> Pos;
+
     @Override
     public void onPlaced(World world, BlockPos pos, BlockState state, @Nullable LivingEntity placer, ItemStack itemStack) {
         super.onPlaced(world, pos, state, placer, itemStack);
-
-            TickEventHandler.getState(pos);
+            if (PlaceCount == 0){
+                ArrayList<BlockPos> BlockPos = new ArrayList<>();
+                BlockPos.add(pos);
+                Pos = BlockPos;
+                TickEventHandler3.getState(BlockPos);
+                PlaceCount++;
+            }
+            else {
+                Pos.add(pos);
+                TickEventHandler3.getState(Pos);
+            }
         }
     }
