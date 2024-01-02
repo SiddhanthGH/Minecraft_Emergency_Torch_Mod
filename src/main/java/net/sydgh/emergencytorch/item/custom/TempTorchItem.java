@@ -29,7 +29,7 @@ public class TempTorchItem extends Item {
             if (isValid(state)){
 
                 context.getStack().decrement(1);
-                context.getPlayer().getInventory().insertStack(ModItems.TempTorch.getDefaultStack());
+                player.getInventory().insertStack(ModItems.TempTorch.getDefaultStack());
 
             }
 

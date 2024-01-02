@@ -2,6 +2,7 @@ package net.sydgh.emergencytorch;
 
 import net.fabricmc.api.ModInitializer;
 
+import net.fabricmc.fabric.api.event.player.UseBlockCallback;
 import net.sydgh.emergencytorch.block.ModBlocks;
 import net.sydgh.emergencytorch.item.ModItemGroups;
 import net.sydgh.emergencytorch.item.ModItems;
@@ -15,9 +16,9 @@ public class EmergencyTorch implements ModInitializer {
 	@Override
 	public void onInitialize() {
 
-		ModItemGroups.registerItemGroups();
 		ModItems.registerModItems();
 		ModBlocks.registerModBlocks();
+		ModItemGroups.registerItemGroups();
 
 	}
 }
