@@ -18,19 +18,24 @@ public class TickEventHandler implements ServerTickEvents.StartWorldTick{
     public void breaker(ServerWorld world){
             world.breakBlock(Pos.get(0), false);
             EmergencyTorch.LOGGER.info(String.valueOf(Index));
-            if (Index == 0){
+            if (Index <= 1){
                 EmergencyTorch.LOGGER.info("in if 1: "+Index);
                 TempTorchBlock.PlaceCount = 0;
             }
-            else if(Index > 0){
+            else if(Index > 1){
+                diff = 0;
                 i = 0;
                 TempTorchBlock.Pos.remove(0);
+                Pos.remove(0);
+                Index = Pos.size();
+                EmergencyTorch.LOGGER.info("in if 2: "+Index);
             }
     }
+
     public static void getState(ArrayList<BlockPos> pos){
         Pos = pos;
         EmergencyTorch.LOGGER.info("size: "+Pos.size());
-        Index = Pos.size() - 1;
+        Index = Pos.size();
         i = 0;
     }
 
@@ -39,7 +44,7 @@ public class TickEventHandler implements ServerTickEvents.StartWorldTick{
         tick = world.getTime();
         long initial = (tick - i);
         diff = tick - initial;
-        if(diff >= 120 && Pos != null){
+        if(Pos != null && diff == (600 * (Index/2))){
             breaker(world);
         }
         i++;

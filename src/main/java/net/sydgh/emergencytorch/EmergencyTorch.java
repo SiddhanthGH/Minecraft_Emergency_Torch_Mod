@@ -4,7 +4,7 @@ import net.fabricmc.api.ModInitializer;
 
 import net.fabricmc.fabric.api.event.lifecycle.v1.ServerTickEvents;
 import net.sydgh.emergencytorch.block.ModBlocks;
-import net.sydgh.emergencytorch.event.TickEventHandler3;
+import net.sydgh.emergencytorch.event.TickEventHandler;
 import net.sydgh.emergencytorch.item.ModItemGroups;
 import net.sydgh.emergencytorch.item.ModItems;
 import org.slf4j.Logger;
@@ -20,7 +20,7 @@ public class EmergencyTorch implements ModInitializer {
 		ModItems.registerModItems();
 		ModBlocks.registerModBlocks();
 		ModItemGroups.registerItemGroups();
-		ServerTickEvents.END_WORLD_TICK.register(new TickEventHandler3());
+		ServerTickEvents.START_WORLD_TICK.register(new TickEventHandler());
 
 	}
 }

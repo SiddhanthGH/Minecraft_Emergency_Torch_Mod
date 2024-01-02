@@ -15,7 +15,7 @@ import net.minecraft.world.World;
 import net.minecraft.world.WorldAccess;
 import net.minecraft.world.WorldView;
 import net.minecraft.block.BlockState;
-import net.sydgh.emergencytorch.event.TickEventHandler3;
+import net.sydgh.emergencytorch.event.TickEventHandler;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.ArrayList;
@@ -70,12 +70,12 @@ public class TempTorchBlock extends Block {
                 ArrayList<BlockPos> BlockPos = new ArrayList<>();
                 BlockPos.add(pos);
                 Pos = BlockPos;
-                TickEventHandler3.getState(BlockPos);
+                TickEventHandler.getState(BlockPos);
                 PlaceCount++;
             }
             else {
                 Pos.add(pos);
-                TickEventHandler3.getState(Pos);
+                TickEventHandler.getState(Pos);
             }
         }
     }
