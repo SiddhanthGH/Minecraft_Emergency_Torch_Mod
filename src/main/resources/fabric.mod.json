@@ -1,9 +1,9 @@
 {
 	"schemaVersion": 1,
 	"id": "emergencytorch",
-	"version": "${version}",
-	"name": "EmergencyTorch",
-	"description": "Adds the ability to make a temporary torch in emergencies.",
+	"version": "0.1.0",
+	"name": "Emergency Torch",
+	"description": "Adds the ability to make a temporary torch in emergencies that lasts for a minute once placed.",
 	"authors": [
 		"SydGH"
 	],
@@ -11,7 +11,7 @@
 		"homepage": "https://fabricmc.net/",
 		"sources": "https://github.com/FabricMC/fabric-example-mod"
 	},
-	"license": "CC0-1.0",
+	"license": "MIT",
 	"icon": "assets/emergencytorch/icon.png",
 	"environment": "*",
 	"entrypoints": {

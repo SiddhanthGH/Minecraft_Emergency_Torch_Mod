@@ -1,6 +1,6 @@
 {
   "block.emergencytorch.temporarytorch": "Temporary Torch",
-  "item.emergencytorch.preparedstick": "Prepared Stick",
+  "item.emergencytorch.preparedstick": "Torch Handle",
 
   "itemgroup.emergencytorch": "Emergency Torch"
 }
