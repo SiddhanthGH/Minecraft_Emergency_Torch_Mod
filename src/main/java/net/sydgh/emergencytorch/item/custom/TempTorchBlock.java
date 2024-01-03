@@ -61,21 +61,24 @@ public class TempTorchBlock extends Block {
     }
 
     public static int PlaceCount = 0;
-    public static ArrayList<BlockPos> Pos;
+    public static ArrayList<BlockPos> Poss;
 
     @Override
     public void onPlaced(World world, BlockPos pos, BlockState state, @Nullable LivingEntity placer, ItemStack itemStack) {
         super.onPlaced(world, pos, state, placer, itemStack);
-            if (PlaceCount == 0){
+        if (world.isClient()) {
+        }
+        else{
+            if (PlaceCount == 0) {
                 ArrayList<BlockPos> BlockPos = new ArrayList<>();
                 BlockPos.add(pos);
-                Pos = BlockPos;
-                TickEventHandler.getState(BlockPos);
+                Poss = BlockPos;
+                TickEventHandler.getState(BlockPos, world);
                 PlaceCount++;
-            }
-            else {
-                Pos.add(pos);
-                TickEventHandler.getState(Pos);
+            } else {
+                Poss.add(pos);
+                TickEventHandler.getState(Poss, world);
             }
         }
     }
+}

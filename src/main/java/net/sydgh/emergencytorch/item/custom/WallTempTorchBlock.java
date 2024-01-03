@@ -103,5 +103,7 @@ public class WallTempTorchBlock extends TempTorchBlock{
     protected void appendProperties(StateManager.Builder<Block, BlockState> builder) {
         builder.add(FACING);
     }
+
+
 }
 
