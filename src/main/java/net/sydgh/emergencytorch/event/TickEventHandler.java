@@ -10,7 +10,6 @@ import java.util.ArrayList;
 
 public class TickEventHandler implements ServerTickEvents.StartWorldTick{
     private static long tick;
-    private static long diff;
     private static ArrayList<BlockPos> Pos = null;
     private static int Index;
     private static World World;
@@ -51,7 +50,7 @@ public class TickEventHandler implements ServerTickEvents.StartWorldTick{
     public void onStartTick(ServerWorld world) {
         tick = world.getTime();
         if (timer1) {
-            diff = tick - iStore.get(0);
+            long diff = tick - iStore.get(0);
             if (Pos != null && diff == 1200) {
                 breaker();
             }
