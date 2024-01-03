@@ -4,7 +4,6 @@ import net.fabricmc.fabric.api.event.lifecycle.v1.ServerTickEvents;
 import net.minecraft.server.world.ServerWorld;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
-import net.sydgh.emergencytorch.EmergencyTorch;
 import net.sydgh.emergencytorch.item.custom.TempTorchBlock;
 
 import java.util.ArrayList;
