@@ -12,8 +12,6 @@ Easy to acquire torches that last for a minute. For use in emergencies such as c
 **Dependencies:**
 -
 - fabricloader 0.15.3
-- minecraft version 1.20.1
-- Java 17
 
 **How to install:**
 -
