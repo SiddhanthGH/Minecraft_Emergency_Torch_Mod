@@ -22,7 +22,7 @@ import org.jetbrains.annotations.Nullable;
 import java.util.ArrayList;
 
 public class TempTorchBlock extends Block {
-    public static final BooleanProperty LIT = RedstoneTorchBlock.LIT;
+    public static final BooleanProperty LIT = BooleanProperty.of("lit");
     protected static final VoxelShape BOUNDING_SHAPE = Block.createCuboidShape(6.0, 0.0, 6.0, 10.0, 10.0, 10.0);
     protected final ParticleEffect particle;
 

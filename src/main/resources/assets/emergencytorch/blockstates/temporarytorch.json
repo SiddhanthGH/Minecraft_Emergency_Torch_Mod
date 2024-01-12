@@ -1,7 +1,10 @@
 {
   "variants": {
-    "": {
+    "lit=true": {
       "model": "emergencytorch:block/temporarytorch"
+    },
+    "lit=false": {
+      "model": "emergencytorch:block/burntout"
     }
   }
 }

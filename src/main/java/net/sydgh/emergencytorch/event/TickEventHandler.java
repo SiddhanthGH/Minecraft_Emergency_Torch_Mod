@@ -58,7 +58,7 @@ public class TickEventHandler implements ServerTickEvents.StartWorldTick{
         tick = world.getTime();
         if (timer1) {
             long diff = tick - iStore.get(0);
-            if (Pos != null && diff == 600) {
+            if (Pos != null && diff == 1200) {
                 breaker();
                 LOGGER.info("Off!");
             }

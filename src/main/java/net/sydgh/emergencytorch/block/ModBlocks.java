@@ -17,9 +17,9 @@ import net.sydgh.emergencytorch.block.custom.WallTempTorchBlock;
 public class ModBlocks {
 
     public static final Block TempTorch = registerBlock("temporarytorch",
-            new TempTorchBlock(AbstractBlock.Settings.create().noCollision().breakInstantly().luminance(state -> state.get(TempTorchBlock.LIT) ? 10:0).sounds(BlockSoundGroup.SOUL_SAND).pistonBehavior(PistonBehavior.DESTROY), ParticleTypes.FLAME));
+            new TempTorchBlock(AbstractBlock.Settings.create().noCollision().breakInstantly().luminance(state -> 10/*state.get(TempTorchBlock.LIT) ? 10:0*/).sounds(BlockSoundGroup.SOUL_SAND).pistonBehavior(PistonBehavior.DESTROY), ParticleTypes.FLAME));
     public static final Block TempTorchWall = registerBlock("walltemporarytorch",
-            new WallTempTorchBlock(AbstractBlock.Settings.create().noCollision().breakInstantly().luminance(state -> state.get(WallTempTorchBlock.LIT) ? 10:0).sounds(BlockSoundGroup.SOUL_SAND).dropsLike(TempTorch).pistonBehavior(PistonBehavior.DESTROY), ParticleTypes.FLAME));
+            new WallTempTorchBlock(AbstractBlock.Settings.create().noCollision().breakInstantly().luminance(state -> 10/*state.get(WallTempTorchBlock.LIT) ? 10:0*/).sounds(BlockSoundGroup.SOUL_SAND).dropsLike(TempTorch).pistonBehavior(PistonBehavior.DESTROY), ParticleTypes.FLAME));
 
     private static Block registerBlock(String name, Block block){
         registerBlockItem(name,block);
