@@ -1,4 +1,4 @@
-package net.sydgh.emergencytorch.item.custom;
+package net.sydgh.emergencytorch.block.custom;
 
 import com.google.common.collect.ImmutableMap;
 import com.google.common.collect.Maps;

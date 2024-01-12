@@ -1,4 +1,4 @@
-package net.sydgh.emergencytorch.item.custom;
+package net.sydgh.emergencytorch.block.custom;
 
 import net.minecraft.block.*;
 import net.minecraft.entity.LivingEntity;
@@ -6,6 +6,7 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.particle.ParticleEffect;
 import net.minecraft.particle.ParticleTypes;
 import net.minecraft.state.StateManager;
+import net.minecraft.state.property.BooleanProperty;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Direction;
 import net.minecraft.util.math.random.Random;
@@ -21,11 +22,13 @@ import org.jetbrains.annotations.Nullable;
 import java.util.ArrayList;
 
 public class TempTorchBlock extends Block {
+    public static final BooleanProperty LIT = RedstoneTorchBlock.LIT;
     protected static final VoxelShape BOUNDING_SHAPE = Block.createCuboidShape(6.0, 0.0, 6.0, 10.0, 10.0, 10.0);
     protected final ParticleEffect particle;
 
     @Override
     protected void appendProperties(StateManager.Builder<Block, BlockState> builder) {
+        builder.add(LIT);
     }
 
     public TempTorchBlock(AbstractBlock.Settings settings, ParticleEffect particle) {
@@ -53,15 +56,18 @@ public class TempTorchBlock extends Block {
 
     @Override
     public void randomDisplayTick(BlockState state0, World world, BlockPos pos, Random random) {
-        double d = (double) pos.getX() + 0.5;
-        double e = (double) pos.getY() + 0.7;
-        double f = (double) pos.getZ() + 0.5;
-        world.addParticle(ParticleTypes.SMOKE, d, e, f, 0.0, 0.0, 0.0);
-        world.addParticle(this.particle, d, e, f, 0.0, 0.0, 0.0);
+        if (state0.get(LIT)) {
+            double d = (double) pos.getX() + 0.5;
+            double e = (double) pos.getY() + 0.7;
+            double f = (double) pos.getZ() + 0.5;
+            world.addParticle(ParticleTypes.SMOKE, d, e, f, 0.0, 0.0, 0.0);
+            world.addParticle(this.particle, d, e, f, 0.0, 0.0, 0.0);
+        }
     }
 
     public static int PlaceCount = 0;
     public static ArrayList<BlockPos> Poss;
+    public static ArrayList<BlockState> Statee;
 
     @Override
     public void onPlaced(World world, BlockPos pos, BlockState state, @Nullable LivingEntity placer, ItemStack itemStack) {
@@ -72,12 +78,16 @@ public class TempTorchBlock extends Block {
             if (PlaceCount == 0) {
                 ArrayList<BlockPos> BlockPos = new ArrayList<>();
                 BlockPos.add(pos);
+                ArrayList<BlockState> BlockState = new ArrayList<>();
+                BlockState.add(state);
                 Poss = BlockPos;
-                TickEventHandler.getState(BlockPos, world);
+                Statee = BlockState;
+                TickEventHandler.getState(BlockPos, world, BlockState);
                 PlaceCount++;
             } else {
                 Poss.add(pos);
-                TickEventHandler.getState(Poss, world);
+                Statee.add(state);
+                TickEventHandler.getState(Poss, world, Statee);
             }
         }
     }
