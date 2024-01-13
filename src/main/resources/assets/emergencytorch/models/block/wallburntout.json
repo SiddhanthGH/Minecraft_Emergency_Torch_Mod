@@ -1,6 +1,6 @@
 {
   "parent": "minecraft:block/template_torch_wall",
   "textures": {
-    "torch": "emergencytorch:block/burntout"
+    "torch": "emergencytorch:block/burnt_out"
   }
 }

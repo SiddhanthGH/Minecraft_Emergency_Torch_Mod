@@ -1,34 +1,34 @@
 {
   "variants": {
-    "facing=east": {
+    "facing=east,lit=true": {
       "model": "emergencytorch:block/walltemporarytorch"
     },
-    "facing=north": {
+    "facing=north,lit=true": {
       "model": "emergencytorch:block/walltemporarytorch",
       "y": 270
     },
-    "facing=south": {
+    "facing=south,lit=true": {
       "model": "emergencytorch:block/walltemporarytorch",
       "y": 90
     },
-    "facing=west": {
+    "facing=west,lit=true": {
       "model": "emergencytorch:block/walltemporarytorch",
       "y": 180
     },
-    "burner=0": {
+    "facing=east,lit=false": {
       "model": "emergencytorch:block/wallburntout"
     },
-    "burner=1": {
+    "facing=north,lit=false": {
+      "model": "emergencytorch:block/wallburntout",
+      "y": 270
+    },
+    "facing=south,lit=false": {
       "model": "emergencytorch:block/wallburntout",
       "y": 90
     },
-    "burner=2": {
+    "facing=west,lit=false": {
       "model": "emergencytorch:block/wallburntout",
       "y": 180
-    },
-    "burner=3": {
-      "model": "emergencytorch:block/wallburntout",
-      "y": 270
     }
   }
 }
