@@ -25,7 +25,7 @@ public class TickEventHandler implements ServerTickEvents.StartWorldTick{
     public void breaker(){
             try {
                 if (State.get(0).get(FACING) == Direction.EAST) {
-                    World.setBlockState(Pos.get(0), State.get(0).with(WallTempTorchBlock.BURNER, 0));
+                    World.setBlockState(Pos.get(0), State.get(0).with(WallTempTorchBlock.BURNER,0));
                     World.setBlockState(Pos.get(0),State.get(0).with(WallTempTorchBlock.LIT,false));
                 } else if (State.get(0).get(FACING) == Direction.SOUTH) {
                     World.setBlockState(Pos.get(0), State.get(0).with(WallTempTorchBlock.BURNER, 1));
@@ -82,7 +82,7 @@ public class TickEventHandler implements ServerTickEvents.StartWorldTick{
             long diff = tick - iStore.get(0);
             if (Pos != null && diff == 400) {
                 breaker();
-                LOGGER.info("Off!");
+                //LOGGER.info("Off!");
             }
         }
     }

@@ -27,12 +27,10 @@ public class TempTorchBlock extends Block {
     public static final BooleanProperty LIT = BooleanProperty.of("lit");
     protected static final VoxelShape BOUNDING_SHAPE = Block.createCuboidShape(6.0, 0.0, 6.0, 10.0, 10.0, 10.0);
     protected final ParticleEffect particle;
-    public static final DirectionProperty FACING = HorizontalFacingBlock.FACING;
 
     @Override
     protected void appendProperties(StateManager.Builder<Block, BlockState> builder) {
         builder.add(LIT);
-        builder.add(FACING);
     }
 
     public TempTorchBlock(AbstractBlock.Settings settings, ParticleEffect particle) {
