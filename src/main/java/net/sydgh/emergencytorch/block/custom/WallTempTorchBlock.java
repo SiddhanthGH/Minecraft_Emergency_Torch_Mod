@@ -7,7 +7,9 @@ import net.minecraft.item.ItemPlacementContext;
 import net.minecraft.particle.ParticleEffect;
 import net.minecraft.particle.ParticleTypes;
 import net.minecraft.state.StateManager;
+import net.minecraft.state.property.BooleanProperty;
 import net.minecraft.state.property.DirectionProperty;
+import net.minecraft.state.property.IntProperty;
 import net.minecraft.util.BlockMirror;
 import net.minecraft.util.BlockRotation;
 import net.minecraft.util.math.BlockPos;
@@ -24,6 +26,8 @@ import java.util.Map;
 
 public class WallTempTorchBlock extends TempTorchBlock{
     public static final DirectionProperty FACING = HorizontalFacingBlock.FACING;
+    public static final BooleanProperty LIT = BooleanProperty.of("lit");
+    public static final IntProperty BURNER = IntProperty.of("burner",0,3);
     private static final Map<Direction, VoxelShape> BOUNDING_SHAPES = Maps.newEnumMap(ImmutableMap.of(Direction.NORTH, Block.createCuboidShape(5.5, 3.0, 11.0, 10.5, 13.0, 16.0), Direction.SOUTH, Block.createCuboidShape(5.5, 3.0, 0.0, 10.5, 13.0, 5.0), Direction.WEST, Block.createCuboidShape(11.0, 3.0, 5.5, 16.0, 13.0, 10.5), Direction.EAST, Block.createCuboidShape(0.0, 3.0, 5.5, 5.0, 13.0, 10.5)));
 
     public WallTempTorchBlock(AbstractBlock.Settings settings, ParticleEffect particleEffect) {
@@ -78,15 +82,17 @@ public class WallTempTorchBlock extends TempTorchBlock{
 
     @Override
     public void randomDisplayTick(BlockState state, World world, BlockPos pos, Random random) {
-        Direction direction = state.get(FACING);
-        double d = (double)pos.getX() + 0.5;
-        double e = (double)pos.getY() + 0.7;
-        double f = (double)pos.getZ() + 0.5;
-        double g = 0.22;
-        double h = 0.27;
-        Direction direction2 = direction.getOpposite();
-        world.addParticle(ParticleTypes.SMOKE, d + 0.27 * (double)direction2.getOffsetX(), e + 0.22, f + 0.27 * (double)direction2.getOffsetZ(), 0.0, 0.0, 0.0);
-        world.addParticle(this.particle, d + 0.27 * (double)direction2.getOffsetX(), e + 0.22, f + 0.27 * (double)direction2.getOffsetZ(), 0.0, 0.0, 0.0);
+        if (state.get(LIT)) {
+            Direction direction = state.get(FACING);
+            double d = (double) pos.getX() + 0.5;
+            double e = (double) pos.getY() + 0.7;
+            double f = (double) pos.getZ() + 0.5;
+            double g = 0.22;
+            double h = 0.27;
+            Direction direction2 = direction.getOpposite();
+            world.addParticle(ParticleTypes.SMOKE, d + 0.27 * (double) direction2.getOffsetX(), e + 0.22, f + 0.27 * (double) direction2.getOffsetZ(), 0.0, 0.0, 0.0);
+            world.addParticle(this.particle, d + 0.27 * (double) direction2.getOffsetX(), e + 0.22, f + 0.27 * (double) direction2.getOffsetZ(), 0.0, 0.0, 0.0);
+        }
     }
 
     @Override
@@ -102,6 +108,8 @@ public class WallTempTorchBlock extends TempTorchBlock{
     @Override
     protected void appendProperties(StateManager.Builder<Block, BlockState> builder) {
         builder.add(FACING);
+        builder.add(LIT);
+        builder.add(BURNER);
     }
 
 

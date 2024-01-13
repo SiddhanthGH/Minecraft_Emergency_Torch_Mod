@@ -7,6 +7,8 @@ import net.minecraft.particle.ParticleEffect;
 import net.minecraft.particle.ParticleTypes;
 import net.minecraft.state.StateManager;
 import net.minecraft.state.property.BooleanProperty;
+import net.minecraft.state.property.DirectionProperty;
+import net.minecraft.state.property.IntProperty;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Direction;
 import net.minecraft.util.math.random.Random;
@@ -25,10 +27,12 @@ public class TempTorchBlock extends Block {
     public static final BooleanProperty LIT = BooleanProperty.of("lit");
     protected static final VoxelShape BOUNDING_SHAPE = Block.createCuboidShape(6.0, 0.0, 6.0, 10.0, 10.0, 10.0);
     protected final ParticleEffect particle;
+    public static final DirectionProperty FACING = HorizontalFacingBlock.FACING;
 
     @Override
     protected void appendProperties(StateManager.Builder<Block, BlockState> builder) {
         builder.add(LIT);
+        builder.add(FACING);
     }
 
     public TempTorchBlock(AbstractBlock.Settings settings, ParticleEffect particle) {
